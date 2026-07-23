@@ -19,7 +19,8 @@ export async function login(_prevState: LoginState, formData: FormData): Promise
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
-    return { error: "Email ou senha incorretos." };
+    // DIAGNÓSTICO TEMPORÁRIO — reverter para mensagem genérica depois de achar a causa.
+    return { error: `[debug] ${error.status ?? "?"} ${error.name}: ${error.message}` };
   }
 
   redirect("/painel");
