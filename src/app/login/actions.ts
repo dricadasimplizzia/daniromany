@@ -16,12 +16,16 @@ export async function login(_prevState: LoginState, formData: FormData): Promise
   }
 
   const supabase = await createClient();
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
     // DIAGNÓSTICO TEMPORÁRIO — reverter para mensagem genérica depois de achar a causa.
     return { error: `[debug] ${error.status ?? "?"} ${error.name}: ${error.message}` };
   }
 
-  redirect("/painel");
+  const { data: check } = await supabase.auth.getUser();
+  // DIAGNÓSTICO TEMPORÁRIO
+  return {
+    error: `[debug] signIn OK session=${!!data.session} user=${data.user?.id} | getUser after = ${check?.user?.id ?? "NULL"}`,
+  };
 }
