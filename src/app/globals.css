@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #f1e6d9;
+  --color-surface: #ffffff;
+  --color-border: #e5d5c3;
+  --color-ink: #33261e;
+  --color-ink-muted: #8c7a6a;
+  --color-sage: #be6a45;
+  --color-sage-soft: #f3decd;
+  --color-brass: #a9743e;
+  --color-brass-soft: #f1e3cc;
+  --color-brick: #8b3e2e;
+  --color-brick-soft: #f1dcd4;
+  --color-teal: #4a372b;
+  --color-teal-soft: #e6ded4;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-border: var(--color-border);
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-sage: var(--color-sage);
+  --color-sage-soft: var(--color-sage-soft);
+  --color-brass: var(--color-brass);
+  --color-brass-soft: var(--color-brass-soft);
+  --color-brick: var(--color-brick);
+  --color-brick-soft: var(--color-brick-soft);
+  --color-teal: var(--color-teal);
+  --color-teal-soft: var(--color-teal-soft);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-sage) !important;
+}
+
+@media print {
+  nav,
+  header {
+    display: none !important;
+  }
+}
